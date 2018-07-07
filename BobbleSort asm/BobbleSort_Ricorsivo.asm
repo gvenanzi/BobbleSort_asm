@@ -1,10 +1,5 @@
 #BubbleSort in ASM (ricorsivo)
 
-#non funziona il controllo delle ripetizioni e lo shifting nel caso di eliminazione delle ripetizioni
-
-#controllo ripetizioni
-#ciclo di shifting
-
 .globl main
 
 .data
@@ -88,7 +83,7 @@ cicleStart:	beq $s7, $s6, endSort
 		li $s4, 0		#iteration counter
 		jal Sort
 endSort:	
-		#il bobbleSort è finito devo scaricare il registro di ritorno 
+		#il bobbleSort Ã¨ finito devo scaricare il registro di ritorno 
 		lw $ra, 0($sp)
 		addi $sp, $sp, 4
 		jr $ra 		#torna al chiamante
@@ -112,7 +107,7 @@ Sort:		beq $s4, $s3, cicleStart
 continue:	addi $s4, $s4, 1
 		jal Sort
 
-		#il Sort è finito devo scaricare il registro di ritorno 
+		#il Sort Ã¨ finito devo scaricare il registro di ritorno 
 		lw $ra, 0($sp)
 		addi $sp, $sp, 4
 		jr $ra 				#torna al chiamante
@@ -121,7 +116,7 @@ control_repetitions:
 		subi $sp, $sp, 4		#allocazione in memoria del registro di ritorno
 		sw $ra, 0($sp)
 		
-		beq $s2, $s1, end_control	#salto a fine se il ciclo è finito
+		beq $s2, $s1, end_control	#salto a fine se il ciclo Ã¨ finito
 		
 		sll $t0, $s2, 2 		#vector's index
 		lw $s3, vector($t0)
